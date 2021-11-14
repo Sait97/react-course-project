@@ -1234,12 +1234,42 @@ h6 {
   font-family: "Montserrat", sans-serif;
   color: #ecf5ff;
 }
-
-#footer .footer-top .social-links a {
+.card-links a {
   font-size: 18px;
   display: inline-block;
-  background: #007bff;
+  color: #A85922;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+.mini-cart__dropdown-toggle{
+  position: relative;
+}
+.mini-cart__count {
+  position: absolute;
+  font-size: 18px;
+  left: -16px;
+  width: 36px;
+  height: 36px;
+  line-height: 1.5;
+  text-align: center;
+  top: 50%;
+  margin-top: -13px;
+  padding: 0;
+  /* background: #a8741a; */
+  border-radius: 50%;
   color: #fff;
+}
+
+.social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background-color: #2F2F2F;
+  color: #A85922;
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -1248,6 +1278,18 @@ h6 {
   width: 36px;
   height: 36px;
   transition: 0.3s;
+}
+.mini-cart__icon {
+  font-size: 18px;
+  color: #fff;
+  display: inline-block;
+  line-height: 1.2;
+ 
+  padding: 0 1rem 0 1.7rem;
+}
+.mini-cart__ammount {
+  padding: 0 1.3rem 0 1rem;
+  color: #fff;
 }
 
 #footer .footer-top .social-links a:hover {
