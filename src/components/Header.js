@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
@@ -31,7 +31,7 @@ const Header = () => {
                     <div className="d-flex ">
                         <a className="mini-cart__dropdown-toggle bordered-icon d-flex" id="cartDropdown">
                         <span className="mini-cart__count">0</span>
-                            <i class="ion-ios-cart-outline mini-cart__icon"></i>
+                            <i className="ion-ios-cart-outline mini-cart__icon"></i>
                         <span className="mini-cart__ammount">80.00</span>
                          {/* <i className="fa fa-angle-down absolute orange-color"></i> */}
                         </a>
@@ -47,17 +47,14 @@ const Header = () => {
             <div className="container d-flex justify-content-center">
                 <nav className="main-nav  d-none d-lg-block">
                     <ul>
-                        <li className="active"><a href="#intro">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li className="drop-down"><a href="">Drop Down</a>
-                            <ul>
-                                <li><a href="#">Drop Down 1</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#contact">Contact Us</a></li>
+                        <li className="active"><Link to="/">Home</Link></li>
+                        <li><Link to="/watches">Watches</Link></li>
+                        <li><Link to="#about">Add Watch</Link></li>
+                        <li><Link to="#about">About Us</Link></li>
+                        <li><Link to="#services">Services</Link></li>
+                        <li><Link to="#contact">Contact Us</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/register">Register</Link></li>
                     </ul>
                 </nav>
 

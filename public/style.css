@@ -129,6 +129,7 @@ h6 {
 
 .row0{
   height: 80px;
+  background: #242424;
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -138,6 +139,7 @@ h6 {
 }
 .row1{
   height: 80px;
+  background: #242424;
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -185,14 +187,70 @@ h6 {
   margin-top: 60px;
 }
 
+
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/
+#login-page{
+  margin: auto;
+  width: 720px;
+  height: 770px auto;
+  margin-top: 15rem;
+}
+#register-page{
+  margin: auto;
+  width: 720px;
+  height: 770px auto;
+  margin-top: 15rem;
+}
+#register-page  h2 {
+  color: #fff;
+  text-transform: uppercase;
+}
+#login-page  h2 {
+  color: #fff;
+  text-transform: uppercase;
+}
+.login-form{
+  background: #343434!important;
+  color: #fff;
+  padding: 20px;  
+  text-align: start;
+}
+.form input {
+  display: block;
+  background-color: #242424;
+  color: #afafaf;
+  width: 100%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  border-radius: 0.25rem;
 
+}
+.btn-style{
+  display: inline-block;
+  background-color: #2e2e2e;
+  color: #fff;
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  padding: 0 2rem;
+  min-height: 3rem;
+  line-height: 3.2rem;
+  text-transform: capitalize;
+}
+.btn-style:hover{
+  background-color: #A85922;
+  color: #fff;
+}
 #intro {
   width: 100%;
+  margin-top: 160px;
   position: relative;
-  background: url("../img/intro-bg.png") center bottom no-repeat;
+  background: url("/images/slider1.webp") center bottom no-repeat;
   background-size: cover;
   padding: 200px 0 120px 0;
 }
@@ -215,8 +273,8 @@ h6 {
 }
 
 #intro .intro-info h2 span {
-  color: #74b5fc;
-  text-decoration: underline;
+  color: #A85922;
+
 }
 
 #intro .intro-info .btn-get-started,
@@ -234,8 +292,8 @@ h6 {
 }
 
 #intro .intro-info .btn-get-started {
-  background: #007bff;
-  border: 2px solid #007bff;
+  background: #171717;
+  border: 2px solid #A85922;
   color: #fff;
 }
 
