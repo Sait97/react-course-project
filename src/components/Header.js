@@ -49,12 +49,11 @@ const Header = () => {
                     <ul>
                         <li className="active"><Link to="/">Home</Link></li>
                         <li><Link to="/watches">Watches</Link></li>
-                        <li><Link to="#about">Add Watch</Link></li>
-                        <li><Link to="#about">About Us</Link></li>
-                        <li><Link to="#services">Services</Link></li>
-                        <li><Link to="#contact">Contact Us</Link></li>
+                        <li><Link to="/add-watch">Add Watch</Link></li>
+
                         <li><Link to="/login">Login</Link></li>
                         <li><Link to="/register">Register</Link></li>
+                        <li><Link to="/logout">Logout</Link></li>
                     </ul>
                 </nav>
 

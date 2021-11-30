@@ -196,12 +196,25 @@ h6 {
   width: 720px;
   height: 770px auto;
   margin-top: 15rem;
+  margin-bottom: 5rem;
 }
 #register-page{
   margin: auto;
   width: 720px;
   height: 770px auto;
   margin-top: 15rem;
+  margin-bottom: 5rem;
+}
+#create-page{
+  margin: auto;
+  width: 720px;
+  height: 770px auto;
+  margin-top: 15rem;
+  margin-bottom: 5rem;
+}
+#create-page  h2 {
+  color: #fff;
+  text-transform: uppercase;
 }
 #register-page  h2 {
   color: #fff;
@@ -526,10 +539,13 @@ h6 {
 
 /* Sections Header
 --------------------------------*/
-
+.section-header {
+  border-bottom: 2px solid #2d2d2d ;
+  border-color: #2d2d2d
+}
 .section-header h3 {
   font-size: 36px;
-  color: #283d50;
+  color: #fff;
   text-align: center;
   font-weight: 500;
   position: relative;
@@ -540,7 +556,7 @@ h6 {
   margin: auto;
   font-size: 15px;
   padding-bottom: 60px;
-  color: #556877;
+  color: #fff;
   width: 50%;
 }
 
@@ -551,6 +567,30 @@ h6 {
   background: #ecf5ff;
 }
 
+.watchCard {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin: 1rem;
+  padding: 1rem;
+  color: #fff;
+  background-color: #242424;
+}
+.watchCard h3{
+  border-top: 2px solid #2d2d2d ;
+  border-bottom: 2px solid #2d2d2d ;
+  border-color: #2d2d2d;
+  padding: 1rem;
+}
+.watchCard img{
+  background-color: #1F1F1F;
+}
+.cardPrice{
+  color: #A85922;
+  font-size: 22px;
+  margin-bottom: 0px;
+  margin-top: 12px;
+}
 /* About Us Section
 --------------------------------*/
 
@@ -660,6 +700,7 @@ h6 {
 #services {
   padding: 60px 0 40px 0;
   box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  background: #242424;
 }
 
 #services .box {
@@ -668,7 +709,7 @@ h6 {
   overflow: hidden;
   border-radius: 10px;
   margin: 0 10px 40px 10px;
-  background: #fff;
+  background: #242424;
   box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
   transition: all 0.3s ease-in-out;
 }
