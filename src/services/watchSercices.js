@@ -10,3 +10,11 @@ export const getAll = async () => {
 
     return result;
 }
+
+export const getOne = async (watchId) => {
+    let response = await fetch(`${baseUrl}/watches/${watchId}`) 
+    let watches = await response.json();
+
+    return watches
+      
+};

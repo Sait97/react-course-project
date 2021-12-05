@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const NewWatchCard = ({
     watch
@@ -11,7 +11,7 @@ const NewWatchCard = ({
             <h3 className ="card-title">{watch.title}</h3>
             <div className="d-flex justify-content-around">
             <p className="cardPrice">$ {watch.price} </p>
-            <a href="#" className ="btn btn-style">Details</a>
+            <Link to={`/details/${watch._id}`} className ="btn btn-style">Details</Link>
             </div>
             </div>
         </div>

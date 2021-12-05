@@ -25,8 +25,9 @@ const NewWatches = () => {
   
           <div className="row">
             {watches.length > 0}
-               {watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )}
-               <p> No Watches in database!</p>
+               {  watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )}
+                 <p> No Watches in database!</p>
+              
            
             {/* <div className="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
               <div className="box">

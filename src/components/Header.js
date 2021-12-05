@@ -1,6 +1,34 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
+import { AuthContext } from "../contexts/AuthContext";
 const Header = () => {
+
+    const { user } = useContext(AuthContext);
+
+    let guestNavigation = (
+        <ul>
+            <li className="active"><Link to="/">Home</Link></li>
+            <li><Link to="/watches">Watches</Link></li>
+          
+
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+           
+        </ul>
+)
+let userNavigation = (
+    <ul>
+    <li className="active"><Link to="/">Home</Link></li>
+    <li><Link to="/watches">Watches</Link></li>
+    <li><Link to="/add-watch">Add Watch</Link></li>
+    <span>Welcome, {user.email}</span>
+   
+    <li><Link to="/logout">Logout</Link></li>
+</ul>
+)
+
+
     return (
 
     <header id="header" >
@@ -46,15 +74,11 @@ const Header = () => {
         <div className="fixed-top-2 row1">
             <div className="container d-flex justify-content-center">
                 <nav className="main-nav  d-none d-lg-block">
-                    <ul>
-                        <li className="active"><Link to="/">Home</Link></li>
-                        <li><Link to="/watches">Watches</Link></li>
-                        <li><Link to="/add-watch">Add Watch</Link></li>
+                   {user.email
+                      ? userNavigation
+                      : guestNavigation
+                   }
 
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/register">Register</Link></li>
-                        <li><Link to="/logout">Logout</Link></li>
-                    </ul>
                 </nav>
 
             </div>

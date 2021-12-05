@@ -1,8 +1,29 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router";
 
-
+import * as authService from '../../services/authService';
+import { AuthContext } from "../../contexts/AuthContext";
 
 
 const Register = () => {
+
+    const navigate = useNavigate();
+    const  { login } = useContext(AuthContext);
+
+    const registerHandler = (e) => {
+        e.preventDefault();
+
+        let { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+
+        authService.register(email, password)
+            .then(authData => {
+                login(authData);
+
+                navigate('/');
+            });
+    }
+
+
     return (
         <div id="register-page">
             <div className="d-flex justify-content-start">
@@ -10,7 +31,7 @@ const Register = () => {
             </div>
         <section className="login-form">
             
-            <form className="form">
+            <form className="form" method="POST" onSubmit={registerHandler}>
                 <fieldset>
                     <div className="mb-3">
                         <label htmlFor="firstName" className="form-label">First Name</label>
