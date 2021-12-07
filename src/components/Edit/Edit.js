@@ -1,49 +1,15 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import * as watchServices from "../services/watchSercices";
-import { AuthContext } from "../contexts/AuthContext";
 
+import './Edit.css'
 
-const Create = () => {
-
-    const { user } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const onCreate = (e) => {
-        e.preventDefault();
-
-        let formData = new FormData(e.currentTarget);
-
-        let title = formData.get('title');
-        let brand = formData.get('brand');
-        let imageUrl = formData.get('imageUrl');
-        let description = formData.get('description');
-        let guarantee = formData.get('guarantee');
-        let price = formData.get('price');
-
-        watchServices.create({
-            title,
-            brand,
-            imageUrl,
-            description,
-            guarantee,
-            price
-        }, user.accessToken)
-            .then(result => {
-                navigate('/watches');
-            })
-    }
-
-
-
+const Edit = () => {
     return (
-        <div id="create-page">
+        <div id="edit-page">
         <div className="d-flex justify-content-start">
-            <h2 className="mb-5">Add Watch</h2>
+            <h2 className="mb-5">Edit</h2>
         </div>
     <section className="login-form">
         
-        <form className="form" onSubmit={onCreate} method="POST">
+        <form className="form">
             <fieldset>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
@@ -80,4 +46,4 @@ const Create = () => {
     )
 }
 
-export default Create;
+export default Edit;

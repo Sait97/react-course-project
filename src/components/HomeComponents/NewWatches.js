@@ -19,7 +19,7 @@ const NewWatches = () => {
         <div className="container">
   
           <header className="section-header">
-            <h3>Services</h3>
+            <h3>Best Products</h3>
             <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
           </header>
   

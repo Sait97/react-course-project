@@ -11,6 +11,23 @@ export const getAll = async () => {
     return result;
 }
 
+export const create = async (watchData, token) => {
+
+    let response = await fetch(`${baseUrl}/watches`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token,
+        },
+        body: JSON.stringify({...watchData})
+    })
+
+
+    let result = await response.json();
+
+    return result;
+};
+
 export const getOne = async (watchId) => {
     let response = await fetch(`${baseUrl}/watches/${watchId}`) 
     let watches = await response.json();
@@ -18,3 +35,14 @@ export const getOne = async (watchId) => {
     return watches
       
 };
+
+export const destroy = async(watchId, token) => {
+    let response = await fetch(`${baseUrl}/watch/${watchId}`, {
+        method: 'DELETE',
+        headers: {
+           'X-Authorization': token
+        }
+    })
+    let result = await response.json();
+    return result
+}

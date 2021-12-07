@@ -182,7 +182,9 @@ h6 {
   margin: 7px 0;
   max-height: 26px;
 }
-
+.welcomeUser{
+  color: #fff;
+}
 .main-pages {
   margin-top: 60px;
 }

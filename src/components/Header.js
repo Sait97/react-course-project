@@ -10,21 +10,17 @@ const Header = () => {
         <ul>
             <li className="active"><Link to="/">Home</Link></li>
             <li><Link to="/watches">Watches</Link></li>
-          
-
             <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-           
+            <li><Link to="/register">Register</Link></li>    
         </ul>
 )
 let userNavigation = (
     <ul>
-    <li className="active"><Link to="/">Home</Link></li>
-    <li><Link to="/watches">Watches</Link></li>
-    <li><Link to="/add-watch">Add Watch</Link></li>
-    <span>Welcome, {user.email}</span>
-   
-    <li><Link to="/logout">Logout</Link></li>
+        <li className="active"><Link to="/">Home</Link></li>
+        <li><Link to="/watches">Watches</Link></li>
+        <li><Link to="/add-watch">Add Watch</Link></li>
+        <li><Link to="#">Welcome, {user.email}</Link></li> 
+        <li><Link to="/logout">Logout</Link></li>
 </ul>
 )
 
@@ -53,7 +49,7 @@ let userNavigation = (
                 <ul className="main-nav  d-flex">
                     <li>
 
-                    <a href="" className="bordered-icon"><i className="fa fa-heart"></i></a>
+                    <Link to="/wishlist" className="bordered-icon"><i className="fa fa-heart"></i></Link>
                     </li>
                     <li>
                     <div className="d-flex ">

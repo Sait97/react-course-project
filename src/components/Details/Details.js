@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import './Details.css';
 import { AuthContext } from "../../contexts/AuthContext";
 import * as watchService from '../../services/watchSercices';
+import { Link } from "react-router-dom";
 
 
 const Details = () => {
+    const navigate = useNavigate()
     const [watch, setWatch] = useState({});
     const { user } = useContext(AuthContext);
     const { watchId} = useParams();
@@ -19,6 +21,15 @@ const Details = () => {
                 setWatch(watchResult);
             })
     }, [watchId])
+
+    const deleteHandler = (e) => {
+        e.preventDefault();
+
+        watchService.destroy(watchId, user.accessToken)
+            .then(() => {
+                navigate('/watches');
+            });
+    }
 
     return(
     <section id="details" className="">
@@ -34,37 +45,44 @@ const Details = () => {
             </div>
             <div className="col-6 details-info mt-4 ">
                 <h2 className="mt-3 mb-3">{watch.title}</h2>
-                <div className="d-flex mt-3 mb-3 justify-content-start">
-                    <div>
+                <div className="d-flex mt-3 mb-3 details-reviews">
+                    <div className="mr-4 mt-3">
                         <i className="fa fa-star " />
                         <i className="fa fa-star " />
                         <i className="fa fa-star " />
                         <i className="fa fa-star " />
                         <i className="fa fa-star " />
                     </div>
-                    <p>Rewiews</p>
-                    <button>Add reviews</button>
+                    <p  className="mr-4 mt-3">Rewiews</p>
+                    <button className="ditails-page-btn">Add reviews</button>
                 </div>
                 <div className="mt-3 mb-3">
-                    <h4>Brand: <span>{watch.brand}</span></h4>
+                    <h4>Brand: <span className="orange-color">{watch.brand}</span></h4>
                 </div>
                 <div className="mt-3 mb-3">
-                    <h3>Guarantee: <span>{watch.guarantee}</span> Year </h3>
+                    <h3>Guarantee: <span className="orange-color"> {watch.guarantee}</span> Year </h3>
+                </div>
+               
+                <div className="mt-3 mb-3">
+                    <button className="ditails-page-btn">Add to Wishlist</button>
+                    <button className="ditails-page-btn">Add to Cart</button>
                 </div>
                 <div className="mt-3 mb-3">
-                    <h3>Price: $ <span>{watch.price}</span></h3>
+                    <h3>Price:  </h3>
+                        <div className="price orange-color" >$ {watch.price}</div>
                 </div>
                 <div className="mt-3 mb-3">
-                    <button>Add to Wishlist</button>
-                    <button>Add to Cart</button>
+                    <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
+                    <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>
                 </div>
-                <div className="mt-3 mb-3">
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-                <div className="mt-3 mb-3">
-                    <h5>Description: </h5>
-                    <p>{watch.description}</p>
+                
+            </div>
+            <div className="row mt-5 row-descriptions">
+                <div className="col-12">
+                    <div className="mt-3 mb-3">
+                        <h3>Description </h3>
+                        <p>{watch.description}</p>
+                    </div>
                 </div>
             </div>
 

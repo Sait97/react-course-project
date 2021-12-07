@@ -1,0 +1,35 @@
+#details {
+    flex-wrap: wrap;
+    padding: 60px 0;
+    margin-top: 10rem;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1); 
+
+}
+
+.details-info{
+    text-align: start;
+    color: #fff;
+    
+}
+.price{
+    font-size: 32px!important;
+}
+.details-reviews{
+    margin-right: 1rem;
+}
+.ditails-page-btn{
+    padding: 0.5rem 3rem;
+    margin-right: 1rem;
+    background-color: #A8741A;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+.ditails-page-btn:hover {
+    background-color: #2e2e2e;
+    color: #fff;
+}
+.row-descriptions{
+    background-color: #212121;
+    color: #fff;
+}
