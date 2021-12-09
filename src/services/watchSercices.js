@@ -36,8 +36,23 @@ export const getOne = async (watchId) => {
       
 };
 
+export const update = async(watchData, watchId, token) => {
+    let response = await fetch(`${baseUrl}/watches/${watchId}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token,
+
+        },
+        body: JSON.stringify({ ...watchData })
+    })
+    let result = await response.json();
+    return result;
+    
+}
+
 export const destroy = async(watchId, token) => {
-    let response = await fetch(`${baseUrl}/watch/${watchId}`, {
+    let response = await fetch(`${baseUrl}/watches/${watchId}`, {
         method: 'DELETE',
         headers: {
            'X-Authorization': token

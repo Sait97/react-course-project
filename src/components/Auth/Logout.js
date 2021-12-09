@@ -1,4 +1,4 @@
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -11,9 +11,9 @@ const Logout = () => {
         authService.logout(user.accessToken)
             .then(() => {
                 logout();
-                navigate('/dashboard');
+                navigate('/');
             })
-    }, [])
+    })
 
     return null;
 };

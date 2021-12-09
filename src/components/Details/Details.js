@@ -11,13 +11,10 @@ const Details = () => {
     const [watch, setWatch] = useState({});
     const { user } = useContext(AuthContext);
     const { watchId} = useParams();
-    
-
+   
     useEffect(() => {
           watchService.getOne(watchId)
             .then(watchResult => {
-                console.log("watchResult");
-                console.log( watchResult);
                 setWatch(watchResult);
             })
     }, [watchId])
@@ -30,7 +27,13 @@ const Details = () => {
                 navigate('/watches');
             });
     }
-
+    const ownerBtn = (
+        <div className="mt-3 mb-3">
+            <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
+            <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>
+        </div>
+    )
+    const userBtn =  <button className="ditails-page-btn">Add reviews</button>
     return(
     <section id="details" className="">
         <div className="container">
@@ -54,7 +57,7 @@ const Details = () => {
                         <i className="fa fa-star " />
                     </div>
                     <p  className="mr-4 mt-3">Rewiews</p>
-                    <button className="ditails-page-btn">Add reviews</button>
+                   
                 </div>
                 <div className="mt-3 mb-3">
                     <h4>Brand: <span className="orange-color">{watch.brand}</span></h4>
@@ -71,6 +74,10 @@ const Details = () => {
                     <h3>Price:  </h3>
                         <div className="price orange-color" >$ {watch.price}</div>
                 </div>
+                {user._id && (user._id === watch._id
+                    ? ownerBtn
+                    : userBtn
+                    )}
                 <div className="mt-3 mb-3">
                     <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
                     <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>

@@ -21,14 +21,15 @@ const Create = () => {
         let guarantee = formData.get('guarantee');
         let price = formData.get('price');
 
-        watchServices.create({
+        let watchItem = {
             title,
             brand,
             imageUrl,
             description,
             guarantee,
             price
-        }, user.accessToken)
+        }
+        watchServices.create(watchItem, user.accessToken)
             .then(result => {
                 navigate('/watches');
             })
