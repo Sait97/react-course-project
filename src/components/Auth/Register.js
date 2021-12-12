@@ -13,9 +13,26 @@ const Register = () => {
     const registerHandler = (e) => {
         e.preventDefault();
 
-        let { email, password } = Object.fromEntries(new FormData(e.currentTarget));
+        
 
-        authService.register(email, password)
+        let formData = new FormData(e.currentTarget);
+
+        let firstName = formData.get('firstName');
+        let lastName = formData.get('lastName');
+        let email = formData.get('email');
+        let password = formData.get('password');
+        let rePassword = formData.get('rePassword');
+        
+
+        let userData = {
+            firstName,
+            lastName,
+            email,
+            password,
+            rePassword,
+        }
+       
+        authService.register(userData)
             .then(authData => {
                 login(authData);
 

@@ -18,14 +18,14 @@ export const login = async(email, password) => {
     }
 };
 
-export const register = async(email, password) => {
+export const register = async(userData) => {
 
     return fetch(`${baseUrl}/users/register`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         }, 
-        body: JSON.stringify({ email, password})
+        body: JSON.stringify({ ...userData})
     })
         .then(res => res.json());
 };
