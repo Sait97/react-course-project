@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3030/jsonstore';
+const baseUrl = 'http://localhost:3030/data';
 
 
 export const getAll = async () => {
@@ -36,7 +36,7 @@ export const getOne = async (watchId) => {
       
 };
 
-export const update = async(watchData, watchId, token) => {
+export const update = async( watchId, watchData, token) => {
     let response = await fetch(`${baseUrl}/watches/${watchId}`, {
         method: 'PUT',
         headers: {
@@ -44,7 +44,7 @@ export const update = async(watchData, watchId, token) => {
             'X-Authorization': token,
 
         },
-        body: JSON.stringify({ ...watchData })
+        body: JSON.stringify(watchData)
     })
     let result = await response.json();
     return result;

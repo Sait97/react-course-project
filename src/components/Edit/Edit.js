@@ -23,26 +23,10 @@ const Edit = () => {
 
     const editHandler = async (e) => {
         e.preventDefault();
-        let formData = new FormData(e.currentTarget);
-
-        let title = formData.get('title');
-        let brand = formData.get('brand');
-        let imageUrl = formData.get('imageUrl');
-        let description = formData.get('description');
-        let guarantee = formData.get('guarantee');
-        let price = formData.get('price');
-
-        let updatedWatch = {
-            title,
-            brand,
-            imageUrl,
-            description,
-            guarantee,
-            price,
-            _id: watchId
-        }
-        
-        await watchService.update(updatedWatch , watchId, user.accessToken)
+       
+        let updatedWatch = Object.fromEntries(new FormData(e.currentTarget))
+          
+        await watchService.update(watchId, updatedWatch, user.accessToken )
            
         navigate('/watches');
            

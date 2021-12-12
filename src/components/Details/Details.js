@@ -74,10 +74,10 @@ const Details = () => {
                     <h3>Price:  </h3>
                         <div className="price orange-color" >$ {watch.price}</div>
                 </div>
-                {user._id && (user._id === watch._id
+                {user._id && (user._id == user._ownerId
                     ? ownerBtn
                     : userBtn
-                    )}
+                )}
                 <div className="mt-3 mb-3">
                     <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
                     <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>

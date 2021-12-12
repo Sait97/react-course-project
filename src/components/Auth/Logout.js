@@ -7,13 +7,14 @@ import { useContext, useEffect } from 'react';
 const Logout = () => {
     const navigate = useNavigate();
     const { user, logout } = useContext(AuthContext);
+
     useEffect(() => {
         authService.logout(user.accessToken)
             .then(() => {
                 logout();
                 navigate('/');
             })
-    })
+    }, [])
 
     return null;
 };
