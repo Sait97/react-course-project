@@ -1,7 +1,7 @@
 import { useParams} from 'react-router-dom'
-import { useState , useEffect, useContext} from 'react';
+import { useState , useEffect} from 'react';
 import * as watchService from '../../services/watchSercices';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 import { useNavigate } from "react-router-dom";
 import './Edit.css'
@@ -10,7 +10,7 @@ import './Edit.css'
 const Edit = () => {
     const { watchId } = useParams();
     const [watch, setWatch] = useState(watchId);
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const navigate = useNavigate();
    
     useEffect(() => {

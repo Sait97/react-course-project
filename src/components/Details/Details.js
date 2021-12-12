@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import './Details.css';
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import * as watchService from '../../services/watchSercices';
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const Details = () => {
     const navigate = useNavigate()
     const [watch, setWatch] = useState({});
-    const { user } = useContext(AuthContext);
+    const { user } = useAuthContext();
     const { watchId} = useParams();
    
     useEffect(() => {
