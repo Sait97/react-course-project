@@ -39,4 +39,11 @@ export const logout = async(token) => {
 
 
 };
+export const getUser = () => {
+    let email = localStorage.getItem('email');
 
+    return email;
+};
+export const isAuthenticated = () => {
+    return Boolean(getUser())
+}

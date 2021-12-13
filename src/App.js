@@ -3,6 +3,7 @@ import './App.css';
 
 
 import { AuthProvider } from './contexts/AuthContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 
 import Login from './components/Auth/Login';
 import Logout from './components/Auth/Logout';
@@ -16,7 +17,7 @@ import Details from './components/Details/Details';
 import Edit from './components/Edit/Edit';
 import NotFound from './components/NotFound/NotFound';
 import Wishlist from './components/Wishlist/Wishlist';
-
+import Notification from './components/Common/Notification/Notification';
 import PrivateRoute from './components/Common/PrivateRoute';
 
 
@@ -26,10 +27,12 @@ function App() {
 
   return (
   <AuthProvider >
+    <NotificationProvider>
 
     <div className="App">
         <Header />
-      <Routes>
+        <Notification />
+        <Routes>
         <Route path="*" element={<NotFound />  } />
         <Route path="/" element={<Home />  } />
         <Route path="/login" element={<Login /> } />
@@ -38,10 +41,11 @@ function App() {
         <Route path="/watches" element={<Watches /> } />
         <Route path="/details/:watchId" element={<Details /> } />
         
-        <Route path="/wishlist" element={<Wishlist /> } />
+       
         <Route element={<PrivateRoute />}>
             <Route path="/edit/:watchId" element={<Edit /> } />
             <Route path="/add-watch" element={<Create /> } />
+            <Route path="/wishlist" element={<Wishlist /> } />
         </Route>
 
       </Routes>
@@ -49,6 +53,7 @@ function App() {
   
         <Footer />
     </div>
+    </NotificationProvider>
   </AuthProvider>
   );
 }

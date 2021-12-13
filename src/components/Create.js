@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import * as watchServices from "../services/watchSercices";
 import { useAuthContext } from "../contexts/AuthContext";
 
+import { useNotificationContext , types} from "../contexts/NotificationContext";
 
 const Create = () => {
 
     const { user } = useAuthContext();
     const navigate = useNavigate();
-
+    const { addNotification } = useNotificationContext();
     const onCreate = (e) => {
         e.preventDefault();
 
@@ -21,6 +22,34 @@ const Create = () => {
         let guarantee = formData.get('guarantee');
         let price = formData.get('price');
 
+        if(title.trim() === ''){
+            return addNotification('Title is required', types.danger)
+        }
+        if(title.length < 3){
+            return addNotification('Title must be at least 3 character long!', types.danger)
+        }
+        if(brand.trim() === ''){
+            return addNotification('Brand is required', types.danger)
+        }
+        if(brand.length < 3){
+            return addNotification('Brand must be at least 3 character long!', types.danger)
+        }
+        if(imageUrl.trim() === ''){
+            return addNotification('ImageUrl is required', types.danger)
+        }
+        if(description.trim() === ''){
+            return addNotification('Description is required', types.danger)
+        }
+        if(description.length < 10){
+            return addNotification('Description must be at least 10 character long!', types.danger)
+        }
+        if(guarantee.trim() === ''){
+            return addNotification('Guarantee is required', types.danger)
+        }
+        if(price.trim() === ''){
+            return addNotification('Price is required', types.danger)
+        }
+
         let watchItem = {
             title,
             brand,
@@ -31,7 +60,12 @@ const Create = () => {
         }
         watchServices.create(watchItem, user.accessToken)
             .then(result => {
+                addNotification('You add watch successfully', types.success)
                 navigate('/watches');
+            })
+            .catch(err => {
+                addNotification('Something went wrong! ', types.danger)
+                console.log(err);
             })
     }
 

@@ -26,9 +26,9 @@ const Watches = () => {
             <div className="col-lg-12">
               <ul id="watches-flters">
                 <li data-filter="*" className="filter-active">All</li>
-                <li data-filter=".filter-app">App</li>
-                <li data-filter=".filter-card">Card</li>
-                <li data-filter=".filter-web">Web</li>
+                <li data-filter=".filter-app">Mens</li>
+                <li data-filter=".filter-card">Ladies</li>
+                <li data-filter=".filter-web">Best Sellers</li>
               </ul>
             </div>
           </div>

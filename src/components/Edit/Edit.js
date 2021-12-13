@@ -2,6 +2,7 @@ import { useParams} from 'react-router-dom'
 import { useState , useEffect} from 'react';
 import * as watchService from '../../services/watchSercices';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useNotificationContext , types} from "../../contexts/NotificationContext";
 
 import { useNavigate } from "react-router-dom";
 import './Edit.css'
@@ -12,7 +13,7 @@ const Edit = () => {
     const [watch, setWatch] = useState(watchId);
     const { user } = useAuthContext();
     const navigate = useNavigate();
-   
+    const { addNotification } = useNotificationContext();
     useEffect(() => {
         watchService.getOne(watchId)
             .then(watchResult => {
@@ -23,15 +24,22 @@ const Edit = () => {
 
     const editHandler = async (e) => {
         e.preventDefault();
-       
-        let updatedWatch = Object.fromEntries(new FormData(e.currentTarget))
-          
-        await watchService.update(watchId, updatedWatch, user.accessToken )
+       try{
+
+           let updatedWatch = Object.fromEntries(new FormData(e.currentTarget))
            
-        navigate('/watches');
+           await watchService.update(watchId, updatedWatch, user.accessToken )
+           addNotification('You edited watch successfully', types.danger)
+           navigate('/watches');
+        }
+        catch(err){
+            addNotification('Somthing went wrong, you cant edit this watch', types.success)
+            console.log(err);
+        }
            
     }
 
+    
     return (
         <div id="edit-page">
         <div className="d-flex justify-content-start">

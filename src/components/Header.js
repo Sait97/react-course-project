@@ -17,7 +17,7 @@ let userNavigation = (
         <li className="active"><Link to="/">Home</Link></li>
         <li><Link to="/watches">Watches</Link></li>
         <li><Link to="/add-watch">Add Watch</Link></li>
-        <li><Link to="#">Welcome, {user.email}</Link></li> 
+        <li><Link to="#">Welcome, <span className="orange-color">{user.email}</span></Link></li> 
         <li><Link to="/logout">Logout</Link></li>
 </ul>
 )

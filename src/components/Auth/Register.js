@@ -3,12 +3,14 @@ import { useNavigate } from "react-router";
 
 import * as authService from '../../services/authService';
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useNotificationContext , types} from "../../contexts/NotificationContext";
 
 
 const Register = () => {
 
     const navigate = useNavigate();
     const  { login } = useAuthContext();
+    const { addNotification } = useNotificationContext();
 
     const registerHandler = (e) => {
         e.preventDefault();
@@ -22,8 +24,32 @@ const Register = () => {
         let email = formData.get('email');
         let password = formData.get('password');
         let rePassword = formData.get('rePassword');
-        
 
+        if(firstName.trim() === ''){
+            return addNotification('FirstName is required', types.danger)
+        }
+        if(firstName.length < 3){
+            return addNotification('Password must be at least 3 character long!', types.danger)
+         }
+        if(lastName.trim() === ''){
+            return addNotification('FirstName is required', types.danger)
+        }
+        if(lastName.length < 3){
+            return addNotification('Password must be at least 3 character long!', types.danger)
+         }
+        if(email.trim() === ''){
+            return addNotification('Email is required', types.danger)
+        }
+        if(password.trim() === ''){
+            return addNotification('Password is required', types.danger)
+        }
+        if(password.length < 3){
+            return addNotification('Password must be at least 3 character long!', types.danger)
+         }
+        if(password !== rePassword){
+            return addNotification('Password`s das not match!', types.danger)
+        }
+        
         let userData = {
             firstName,
             lastName,
@@ -35,9 +61,13 @@ const Register = () => {
         authService.register(userData)
             .then(authData => {
                 login(authData);
-
+                addNotification('You register was successfully', types.success)
                 navigate('/');
-            });
+            })
+            .catch(err => {
+                addNotification('Something went wrong!', types.danger)
+                console.log(err);
+            })
     }
 
 

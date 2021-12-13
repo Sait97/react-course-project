@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import './Details.css';
 import { useAuthContext } from "../../contexts/AuthContext";
 import * as watchService from '../../services/watchSercices';
-import { Link } from "react-router-dom";
+import * as likeService from '../../services/likeServices';
+
 
 
 const Details = () => {
     const navigate = useNavigate()
-    const [watch, setWatch] = useState({});
     const { user } = useAuthContext();
     const { watchId} = useParams();
+    const [watch, setWatch] = useState({});
    
     useEffect(() => {
           watchService.getOne(watchId)
             .then(watchResult => {
                 setWatch(watchResult);
             })
-    }, [watchId])
+    }, [watchId]);
+
+    useEffect(() => {
+        likeService.getWatchLikes(watchId)
+          .then(likes => {
+            setWatch(state => ({...state, likes}));
+          })
+  }, [])
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -27,13 +35,50 @@ const Details = () => {
                 navigate('/watches');
             });
     }
+
+    const likeBtn = () => { 
+        if(user._id === watch._ownerId){
+            return;
+        }
+
+        // if(watch.likes.includes(user._id)){
+        //     return;
+        // }
+
+        likeService.like(user._id, watchId)
+            .then(() => {
+                console.log(watchId);
+                setWatch(state => ({...state, likes: [...state.likes, user._id]}));
+            });
+    }
+
     const ownerBtn = (
-        <div className="mt-3 mb-3">
+        <>
+       
+        <div className="mt-3 mb-3 d-flex">
+            <div className="d-flex mr-4 likesIcon">
+                <i className="orange-color fa fa-heart " />
+            </div>
+            <span className="mr-4 likes-text">{watch.likes?.length || 0} Likes</span>
+        </div>
+        <div className="mt-3 mb-3 d-flex">
             <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
             <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>
         </div>
+        </>
     )
-    const userBtn =  <button className="ditails-page-btn">Add reviews</button>
+
+    const userBtn =  (
+        <>
+            <div className="mt-3 mb-3 d-flex mr-4 likesIcon">
+                <i className="orange-color fa fa-heart " />
+                <span className="mr-4 likes-text">{watch.likes?.length || 0} Likes</span>
+                <button onClick={likeBtn} className="ditails-page-btn">Like</button>
+            </div>
+        </>
+        )
+
+
     return(
     <section id="details" className="">
         <div className="container">
@@ -57,7 +102,7 @@ const Details = () => {
                         <i className="fa fa-star " />
                     </div>
                     <p  className="mr-4 mt-3">Rewiews</p>
-                   
+                    <button className="ditails-page-btn">Add reviews</button>
                 </div>
                 <div className="mt-3 mb-3">
                     <h4>Brand: <span className="orange-color">{watch.brand}</span></h4>
@@ -65,24 +110,22 @@ const Details = () => {
                 <div className="mt-3 mb-3">
                     <h3>Guarantee: <span className="orange-color"> {watch.guarantee}</span> Year </h3>
                 </div>
-               
+               <div className="mt-3 mb-3 d-flex">
+                    <h3 className="mr-3 pt-2">Price:  </h3>
+                        <span className="price orange-color" >$ {watch.price}</span>
+                </div>
                 <div className="mt-3 mb-3">
                     <button className="ditails-page-btn">Add to Wishlist</button>
                     <button className="ditails-page-btn">Add to Cart</button>
                 </div>
-                <div className="mt-3 mb-3">
-                    <h3>Price:  </h3>
-                        <div className="price orange-color" >$ {watch.price}</div>
-                </div>
-                {user._id && (user._id == user._ownerId
-                    ? ownerBtn
-                    : userBtn
-                )}
-                <div className="mt-3 mb-3">
-                    <Link className="ditails-page-btn" to={`/edit/${watch._id}`}>Edit</Link>
-                    <a className="ditails-page-btn" href="#" onClick={deleteHandler} >Delete</a>
-                </div>
                 
+                <div className="mt-3 mb-3">
+                    {user._id && (user._id == watch._ownerId
+                        ? ownerBtn
+                        : userBtn    
+                    )}
+                </div>
+    
             </div>
             <div className="row mt-5 row-descriptions">
                 <div className="col-12">

@@ -3,30 +3,40 @@ import { useNavigate } from "react-router";
 
 import * as authService from '../../services/authService';
 import { useAuthContext } from "../../contexts/AuthContext";
-
+import { useNotificationContext , types} from "../../contexts/NotificationContext";
 
 
 const Login = () => {
 
     const { login } = useAuthContext();
     const navigate = useNavigate();
-
+    const { addNotification } = useNotificationContext();
     const onLogin = (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.currentTarget);
-
+        addNotification('You logged in successfully')
         let email = formData.get('email');
         let password = formData.get('password');
-    
+        console.log(password.length);
+        if(email.trim() === ''){
+            return addNotification('Email is required')
+        }
+        if(password.trim() === ''){
+            return addNotification('Password is required')
+        }
+        if(password.length < 3){
+           return addNotification('Password must be at least 3 character long!', types.danger)
+        }
         authService.login(email, password)
             .then((authData) => {
                 login(authData);
-
+                addNotification('You logged in successfully', types.success)
                 navigate('/');
 
             })
             .catch(err => {
+                addNotification('Email or Password don`t match!', types.danger)
                 console.log(err);
             })
 
