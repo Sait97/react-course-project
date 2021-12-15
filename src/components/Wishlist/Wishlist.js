@@ -1,7 +1,28 @@
 import { Link } from "react-router-dom"
 import './Wishlist.css';
 
+
+import { useEffect, useState } from "react";
+
+import { useAuthContext } from "../../contexts/AuthContext";
+
+import * as likeService from '../../services/likeServices';
+
 const Wishlist = () => {
+  const { user } = useAuthContext();
+  
+  const [watch, setWatch] = useState({});
+ 
+//   useEffect(() => {
+//       likeService.getWishlist(user.wishlist)
+//         .then(wishlist => {
+//           console.log(user.wishlist);
+//           setWatch(state => {
+//               console.log(...state);});
+//           // setWatch(state => ({...state, wishlist}));
+//         })
+// }, [])
+ 
     return(
         <section id="wishlist" className="">
         <div className="container">

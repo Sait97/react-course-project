@@ -19,6 +19,7 @@ import NotFound from './components/NotFound/NotFound';
 import Wishlist from './components/Wishlist/Wishlist';
 import Notification from './components/Common/Notification/Notification';
 import PrivateRoute from './components/Common/PrivateRoute';
+import MyProfile from './components/MyProfile/MyProfile';
 
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/edit/:watchId" element={<Edit /> } />
             <Route path="/add-watch" element={<Create /> } />
             <Route path="/wishlist" element={<Wishlist /> } />
+            <Route path="/my-profile" element={<MyProfile /> } />
         </Route>
 
       </Routes>

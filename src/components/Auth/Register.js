@@ -56,6 +56,7 @@ const Register = () => {
             email,
             password,
             rePassword,
+            wishlist: []
         }
        
         authService.register(userData)

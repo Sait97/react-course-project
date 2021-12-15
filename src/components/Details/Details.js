@@ -7,12 +7,14 @@ import * as likeService from '../../services/likeServices';
 
 
 
+
 const Details = () => {
     const navigate = useNavigate()
-    const { user } = useAuthContext();
+    const { user , setUser} = useAuthContext();
     const { watchId} = useParams();
     const [watch, setWatch] = useState({});
-   
+  
+    
     useEffect(() => {
           watchService.getOne(watchId)
             .then(watchResult => {
@@ -40,18 +42,30 @@ const Details = () => {
         if(user._id === watch._ownerId){
             return;
         }
-
+        // Remobe Coments 
         // if(watch.likes.includes(user._id)){
         //     return;
         // }
 
         likeService.like(user._id, watchId)
             .then(() => {
-                console.log(watchId);
+                
                 setWatch(state => ({...state, likes: [...state.likes, user._id]}));
             });
     }
+    const addToWishlistBtn = async() => {
+        
+        let wishlist = [...user.wishlist, user._id];
+        let addtoWishlist = {...user, wishlist};
 
+        watchService.wishlist(user._id, addtoWishlist, user.accessToken)
+            .then((resData) => {
+                setUser(state => ({
+                    ...state,
+                    wishlist,
+                }));
+            });
+    }
     const ownerBtn = (
         <>
        
@@ -115,7 +129,7 @@ const Details = () => {
                         <span className="price orange-color" >$ {watch.price}</span>
                 </div>
                 <div className="mt-3 mb-3">
-                    <button className="ditails-page-btn">Add to Wishlist</button>
+                    <Link  to="#" onClick={addToWishlistBtn} className="ditails-page-btn">Add to Wishlist</Link>
                     <button className="ditails-page-btn">Add to Cart</button>
                 </div>
                 

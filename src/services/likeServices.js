@@ -11,29 +11,13 @@ export const getWatchLikes = (watchId) => {
         .then(res => res.map(x => x.userId));
 }
 
-// export const like = async (userId, watchId, token) => {
+export const wishlist = (userId, watchId) => request.post(`${baseUrl}/users`, {userId, watchId});
 
-    
-//     let response = await fetch(`${baseUrl}/likes`, {
-//         method: 'POST',
-//         headers: {
-//             'content-type': 'application/json',
-//             'X-Authorization': token,
-//         },
-//         body: JSON.stringify({userId, watchId})
-//     })
-    
-    
-//     let result = await response.json();
-    
-//     return result;
-// }
+export const getWishlistItem = (watchId) => {
+    const query = encodeURIComponent(`watchId="${watchId}"`);
 
-// export const getWatchLikes = async (watchId) => {
-//     const query = encodeURIComponent(`watchId="${watchId}"`);
+    return request.get(`${baseUrl}`)
+    // return request.get(`${baseUrl}/wishlist?select=userId&where=${query}`)
+    //     .then(res => res.map(x => x.userId));
+}
 
-//     let response = await fetch(`${baseUrl}/likes?select=userId&where=${query}`)
-//         let jsonData = await response.json()
-//         Object.values(jsonData).map(x => x.userId);
-        
-// };

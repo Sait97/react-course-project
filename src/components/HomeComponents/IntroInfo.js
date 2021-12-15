@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const IntroInfo = () => {
@@ -9,7 +10,7 @@ const IntroInfo = () => {
           <div className="intro-info">
             <h2>We provide<br/><span>Quality</span><br/>Watches!</h2>
             <div>
-              <a href="#about" className="btn-get-started scrollto">SHOP NOW</a>
+              <Link to="/watches" className="btn-get-started scrollto">SHOP NOW</Link>
              
             </div>
           </div>

@@ -1,3 +1,5 @@
+import * as request from './requester';
+
 const baseUrl = 'http://localhost:3030/data';
 
 
@@ -10,6 +12,12 @@ export const getAll = async () => {
 
     return result;
 }
+export const getMyWatches = (ownerId) => {
+    let query = encodeURIComponent(`_ownerId="${ownerId}"`);
+
+    return request.get(`${baseUrl}/watches?where=${query}`);
+
+};
 
 export const create = async (watchData, token) => {
 
@@ -46,6 +54,22 @@ export const update = async( watchId, watchData, token) => {
         },
         body: JSON.stringify(watchData)
     })
+    let result = await response.json();
+    return result;
+    
+}
+
+export const wishlist = async( userId, addtoWishlist, token) => {
+    let response = await fetch(`http://localhost:3030/users/me`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'X-Authorization': token,
+
+        },
+        body: JSON.stringify(addtoWishlist)
+    })
+   console.log(await response);
     let result = await response.json();
     return result;
     

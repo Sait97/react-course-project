@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../contexts/AuthContext";
-const Header = () => {
 
+import { useAuthContext } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
+import {  useParams, Link } from "react-router-dom";
+
+
+import * as likeService from '../services/likeServices';
+const Header = () => {
     const { user } = useAuthContext();
+//     const { watchId} = useParams();
+//     const [watch, setWatch] = useState({});
+   
+//     useEffect(() => {
+//         likeService.getWishlist(watchId)
+//           .then(wishlist => {
+//             setWatch(state => ({...state, wishlist}));
+//           })
+//   }, [])
+   
 
     let guestNavigation = (
         <ul>
@@ -17,7 +31,7 @@ let userNavigation = (
         <li className="active"><Link to="/">Home</Link></li>
         <li><Link to="/watches">Watches</Link></li>
         <li><Link to="/add-watch">Add Watch</Link></li>
-        <li><Link to="#">Welcome, <span className="orange-color">{user.email}</span></Link></li> 
+        <li><Link to="/my-profile">Welcome, <span className="orange-color">{user.email}</span></Link></li> 
         <li><Link to="/logout">Logout</Link></li>
 </ul>
 )
@@ -52,7 +66,7 @@ let userNavigation = (
                     <li>
                     <div className="d-flex ">
                         <a className="mini-cart__dropdown-toggle bordered-icon d-flex" id="cartDropdown">
-                        <span className="mini-cart__count">0</span>
+                        {/* <span className="mini-cart__count">{user.wishlist.length || 0}</span> */}
                             <i className="ion-ios-cart-outline mini-cart__icon"></i>
                         <span className="mini-cart__ammount">80.00</span>
                          {/* <i className="fa fa-angle-down absolute orange-color"></i> */}
