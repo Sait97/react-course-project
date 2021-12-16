@@ -1,0 +1,11 @@
+#create-page{
+    margin: auto;
+    width: 720px;
+    height: 770px auto;
+    margin-top: 15rem;
+    margin-bottom: 5rem;
+  }
+  #create-page  h2 {
+    color: #fff;
+    text-transform: uppercase;
+  }

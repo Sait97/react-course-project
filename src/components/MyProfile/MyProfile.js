@@ -14,7 +14,7 @@ const MyProfile = () => {
         .then(result => {
            setWatches(result);
         })
-    }, []);
+    }, [user._id]);
 
     return (
         <section id="MyProfile" className="">

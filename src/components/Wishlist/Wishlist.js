@@ -2,17 +2,17 @@ import { Link } from "react-router-dom"
 import './Wishlist.css';
 
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
-import { useAuthContext } from "../../contexts/AuthContext";
+// import { useAuthContext } from "../../contexts/AuthContext";
 
-import * as likeService from '../../services/likeServices';
+// import * as likeService from '../../services/likeServices';
 
 const Wishlist = () => {
-  const { user } = useAuthContext();
-  
-  const [watch, setWatch] = useState({});
+
+  const [watch] = useState({});
  
+  console.log(watch);
 //   useEffect(() => {
 //       likeService.getWishlist(user.wishlist)
 //         .then(wishlist => {
@@ -52,7 +52,7 @@ const Wishlist = () => {
                             <Link to="#"><img src="#" alt="watch"/></Link>
                           </td>
                           <td>
-                            <Link to="#">Title</Link>
+                            <Link to="#">{watch.title}</Link>
                           </td>
                           <td>
                             <Link to="#">Price</Link>

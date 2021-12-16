@@ -8,7 +8,7 @@ import { NotificationProvider } from './contexts/NotificationContext';
 import Login from './components/Auth/Login';
 import Logout from './components/Auth/Logout';
 import Register from './components/Auth/Register';
-import Create from './components/Create';
+import Create from './components/Create/Create';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';

@@ -27,7 +27,7 @@ const Details = () => {
           .then(likes => {
             setWatch(state => ({...state, likes}));
           })
-  }, [])
+  }, [watchId])
 
     const deleteHandler = (e) => {
         e.preventDefault();
@@ -53,17 +53,20 @@ const Details = () => {
                 setWatch(state => ({...state, likes: [...state.likes, user._id]}));
             });
     }
-    const addToWishlistBtn = async() => {
-        
-        let wishlist = [...user.wishlist, user._id];
+    const addToWishlistBtn = (e) => {
+         e.preventDefault();
+        let wishlist = [...user.wishlist, watchId];
         let addtoWishlist = {...user, wishlist};
-
-        watchService.wishlist(user._id, addtoWishlist, user.accessToken)
+       
+        // console.log(addtoWishlist);
+         watchService.wishlist(user._id, addtoWishlist, user.accessToken)
             .then((resData) => {
+               
                 setUser(state => ({
                     ...state,
                     wishlist,
                 }));
+               
             });
     }
     const ownerBtn = (

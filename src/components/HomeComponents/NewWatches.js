@@ -8,7 +8,7 @@ const NewWatches = () => {
     const [watches, setWatches] = useState([]);
 
     useEffect(() => {
-      watchService.getAll()
+      watchService.getTopTreeLiked()
         .then(result => {
            setWatches(result);
         })
@@ -21,7 +21,7 @@ const NewWatches = () => {
   
           <header className="section-header">
             <h3>Best Products</h3>
-            <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+            <p>Our best products.</p>
           </header>
   
           <>

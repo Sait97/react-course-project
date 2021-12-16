@@ -14,7 +14,7 @@ export const getWatchLikes = (watchId) => {
 export const wishlist = (userId, watchId) => request.post(`${baseUrl}/users`, {userId, watchId});
 
 export const getWishlistItem = (watchId) => {
-    const query = encodeURIComponent(`watchId="${watchId}"`);
+    
 
     return request.get(`${baseUrl}`)
     // return request.get(`${baseUrl}/wishlist?select=userId&where=${query}`)

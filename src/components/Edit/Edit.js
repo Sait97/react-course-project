@@ -29,11 +29,11 @@ const Edit = () => {
            let updatedWatch = Object.fromEntries(new FormData(e.currentTarget))
            
            await watchService.update(watchId, updatedWatch, user.accessToken )
-           addNotification('You edited watch successfully', types.danger)
+           addNotification('You edited watch successfully', types.success)
            navigate('/watches');
         }
         catch(err){
-            addNotification('Somthing went wrong, you cant edit this watch', types.success)
+            addNotification('Somthing went wrong, you cant edit this watch', types.danger)
             console.log(err);
         }
            

@@ -19,6 +19,14 @@ export const getMyWatches = (ownerId) => {
 
 };
 
+export const getTopTreeLiked = async () => {
+    let response = await fetch(`${baseUrl}/watches?sortBy=_createdOn%20desc&pageSize=3`)
+    let watches = await response.json();
+    let result = Object.values(watches);
+   
+    return result 
+       
+}
 export const create = async (watchData, token) => {
 
     let response = await fetch(`${baseUrl}/watches`, {
@@ -60,7 +68,7 @@ export const update = async( watchId, watchData, token) => {
 }
 
 export const wishlist = async( userId, addtoWishlist, token) => {
-    let response = await fetch(`http://localhost:3030/users/me`, {
+    let response = await fetch(`http://localhost:3030/users/${userId}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -69,7 +77,7 @@ export const wishlist = async( userId, addtoWishlist, token) => {
         },
         body: JSON.stringify(addtoWishlist)
     })
-   console.log(await response);
+   console.log(addtoWishlist);
     let result = await response.json();
     return result;
     
