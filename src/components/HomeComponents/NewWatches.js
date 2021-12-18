@@ -13,7 +13,7 @@ const NewWatches = () => {
            setWatches(result);
         })
     }, []);
-
+   
    
     return (
         <section id="services" className="section-bg">
@@ -26,11 +26,13 @@ const NewWatches = () => {
   
           <>
           <div className="row">
+            
             {watches.length > 0
 
-               ?  (watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )
+               ?  (
+                 watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )
                ) 
-               : <p> No Watches in database!</p>        
+               : <p className="no-data-info"> No Watches in database!</p>        
             }
           </div>
           </>

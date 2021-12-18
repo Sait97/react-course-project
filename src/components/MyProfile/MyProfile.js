@@ -24,8 +24,12 @@ const MyProfile = () => {
             <h3 className="section-title">My Profile</h3>
           </header>
           <div className="row portfolio-container">
-                 {watches.length > 0}
-                     {  watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )}   
+          {watches.length > 0
+              ?  (
+                watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )
+              ) 
+              : <p className="no-data-info">You dont have watches yet!</p>        
+            }
           </div>
         </div>
       </section>

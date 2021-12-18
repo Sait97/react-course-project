@@ -68,7 +68,8 @@ export const update = async( watchId, watchData, token) => {
 }
 
 export const wishlist = async( userId, addtoWishlist, token) => {
-    let response = await fetch(`http://localhost:3030/users/${userId}`, {
+    console.log(addtoWishlist);
+    let response = await fetch(`http://localhost:3030/users/register`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
@@ -77,8 +78,9 @@ export const wishlist = async( userId, addtoWishlist, token) => {
         },
         body: JSON.stringify(addtoWishlist)
     })
-   console.log(addtoWishlist);
+  
     let result = await response.json();
+    console.log(result);
     return result;
     
 }

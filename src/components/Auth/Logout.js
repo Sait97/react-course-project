@@ -21,7 +21,7 @@ const Logout = () => {
                 addNotification('Something whent wrong!', types.danger)
                 console.log(err);
             })
-    }, [addNotification, user, logout,navigate])
+    }, [useAuthContext, useNotificationContext])
 
     return null;
 };

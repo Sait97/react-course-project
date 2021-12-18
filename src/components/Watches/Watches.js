@@ -34,8 +34,13 @@ const Watches = () => {
           </div>
   
           <div className="row portfolio-container">
-                 {watches.length > 0}
-                     {  watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )}   
+          {watches.length > 0
+
+?  (
+  watches.map (x =>  <NewWatchCard key={x._id} watch={x} /> )
+) 
+: <p className="no-data-info"> No Watches in database!</p>        
+} 
           </div>
         </div>
       </section>

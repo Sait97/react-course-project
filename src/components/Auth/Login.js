@@ -18,7 +18,7 @@ const Login = () => {
         addNotification('You logged in successfully')
         let email = formData.get('email');
         let password = formData.get('password');
-        console.log(password.length);
+       
         if(email.trim() === ''){
             return addNotification('Email is required')
         }

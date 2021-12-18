@@ -10,10 +10,10 @@ import * as likeService from '../../services/likeServices';
 
 const Details = () => {
     const navigate = useNavigate()
-    const { user , setUser} = useAuthContext();
+    const { user, setUser } = useAuthContext();
     const { watchId} = useParams();
     const [watch, setWatch] = useState({});
-  
+    
     
     useEffect(() => {
           watchService.getOne(watchId)
@@ -55,19 +55,18 @@ const Details = () => {
     }
     const addToWishlistBtn = (e) => {
          e.preventDefault();
-        let wishlist = [...user.wishlist, watchId];
-        let addtoWishlist = {...user, wishlist};
-       
-        // console.log(addtoWishlist);
+         let wishlist = [...user.wishlist, watchId];
+         let addtoWishlist = {...user, wishlist};
+         
+         
          watchService.wishlist(user._id, addtoWishlist, user.accessToken)
-            .then((resData) => {
-               
-                setUser(state => ({
-                    ...state,
-                    wishlist,
+         .then((resData) => {
+             setUser(user => ({
+                 ...user, wishlist
                 }));
-               
+                
             });
+              
     }
     const ownerBtn = (
         <>

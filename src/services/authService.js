@@ -31,6 +31,7 @@ export const register = async(userData) => {
 };
 
 export const logout = async(token) => {
+   
     return fetch(`${baseUrl}/users/logout`, {
         headers: {
             'X-Authorization': token
